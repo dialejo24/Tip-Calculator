@@ -22,16 +22,14 @@ body {
     font-family: 'Space Mono', monospace;
     background-color: var(--light-grayish-cyan);
 }
-
-input[type="number"] {
-    outline: none;
-    -moz-appearance: textfield;
-    background-color: var(--very-light-grayish-cyan);
-    color:var(--very-dark-cyan);
-    font-family: 'Space Mono', monospace;
-    outline: none;
-    border: none;
+.container {
+    min-height: 100vh;
+    display: grid;
+    justify-content: center;
+    align-items: center;
 }
+
+/* =====Custom input[number]====== */
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
     -webkit-appearance: none;
@@ -51,22 +49,117 @@ input[type="number"]::-webkit-inner-spin-button {
     color:var(--dark-grayish-cyan);
 }
 
+input[type="number"] {
+    outline: none;
+    -moz-appearance: textfield;
+    background-color: var(--very-light-grayish-cyan);
+    color:var(--very-dark-cyan);
+    font-family: 'Space Mono', monospace;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    border-radius: 10px;
+    padding-block: .15em;
+    width:100%;
+    border: solid 2px transparent;
+    transition: .1s border ease-in;
+}
+
+input[type=number]:focus {
+    border:2px solid var(--strong-cyan);
+}
+
+.bill {
+    background-image: url("../images/icon-dollar.svg");
+}
+
+.people {
+    background-image: url("../images/icon-person.svg");
+}
+
+.bill, 
+.people {
+    background-repeat: no-repeat;
+    background-position: .5em 50%;
+    margin-block:.25em 1em;
+    padding-right:.5em;
+    padding-left: 1.5em;
+}
+
+.custom {
+    padding-inline: 0.4em;
+}
+
+
+/* ====Custom input[radio] 'percentaje buttons' =====*/
+.container_perc {
+    position: relative;
+    display: flex;
+    height:47.2px;
+}
+
+.btn {
+    appearance: none;
+    -webkit-appearance: none;
+    margin:0;
+    position: absolute;
+}
+
+input[type=radio]:checked + .percentaje {
+    color:var(--very-dark-cyan);
+    background-color: var(--strong-cyan);
+}
+
+.percentaje {
+    color:var(--white);
+    cursor:pointer;
+    background-color: var(--very-dark-cyan);
+    text-align: center;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius:8px;
+    transition: all .15s ease-in-out;
+    font-size:1.5rem;
+}
+
+.percentaje:hover{
+    color:var(--very-dark-cyan);
+    background-color: var(--light-grayish-cyan);
+}
+
+
 .main {
     background-color: var(--white);
+    border-radius: 15px;
+    padding:2em;
+    max-width: 65em;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2.5em;
+}
+
+.buttons {
+    margin-top:1em;
+    margin-bottom: 2em;
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(110px,1fr));
+    gap:1em;
 }
 
 .title {
     color:var(--grayish-cyan);
 }
 
-.btn {
-    color:var(--white);
-    background-color: var(--very-dark-cyan);
-    border: none;
-}
-
 .results {
     background-color: var(--very-dark-cyan);
+    padding: 2.5em 1.5em 1.5em 1.5em;
+    border-radius: 15px;
 }
 .header {
     color:var(--very-light-grayish-cyan);
@@ -76,14 +169,70 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 .amount {
     color:var(--strong-cyan);
+    font-size: 2rem;
+}
+.tip_amount,
+.total_person {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5em;
 }
 .reset {
     background-color: var(--strong-cyan);
     border:none;
     color:var(--very-dark-cyan);
-    width:3em;
+    width:100%;
     font-weight: 700;
     opacity:0.4;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    padding-block: 0.6em;
+    border-radius: 8px;
+    margin-top: 0.8em;
+    font-family: 'Space Mono', monospace;
+    cursor: pointer;
+    transition: all .15s ease-out;
+}
+.reset:hover {
+    background-color: var(--light-grayish-cyan);
+    opacity: 1;
+}
+
+.attribution {
+    text-align: center;
+}
+
+@media (min-width: 43.75em) {
+    .main {
+        display: flex;
+        gap:3em;
+    }
+    .user_input {
+        width:50%;
+    }
+    .results {
+        width:50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 3em 2.5em 2.5em 2.5em;
+    }
+    .logo {
+        margin-bottom: 5em;
+    }
+    .tip_amount {
+        margin-bottom: 2em;
+    }
+    .amount {
+        font-size: min(3.5rem, calc(1rem + 2vw));
+    }
+
+}
+@media (max-height: 898px ) and (max-width: 700px) {
+    .container {
+        margin-block: 2em;
+    }
 }
 
 
