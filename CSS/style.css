@@ -8,6 +8,7 @@
     --light-grayish-cyan: hsl(185, 41%, 84%);
     --very-light-grayish-cyan: hsl(189, 41%, 97%);
     --white: hsl(0, 0%, 100%);
+    --focus-color: hsl(172, 67%, 45%);
 }
 
 *,
@@ -60,35 +61,33 @@ input[type="number"] {
     cursor: pointer;
     font-size: 1.5rem;
     border-radius: 10px;
-    padding-block: .15em;
+    padding-block: .31em;
     width:100%;
     border: solid 2px transparent;
     transition: .1s border ease-in;
 }
 
-input[type=number]:focus {
-    border:2px solid var(--strong-cyan);
-}
-
 .bill {
     background-image: url("../images/icon-dollar.svg");
+    margin-block:.25em 1.5em;
 }
 
 .people {
     background-image: url("../images/icon-person.svg");
+    margin-block:.25em 1em;
 }
 
 .bill, 
 .people {
     background-repeat: no-repeat;
     background-position: .5em 50%;
-    margin-block:.25em 1em;
     padding-right:.5em;
     padding-left: 1.5em;
 }
 
 .custom {
     padding-inline: 0.4em;
+    height: 47.2px;
 }
 
 
@@ -135,7 +134,7 @@ input[type=radio]:checked + .percentaje {
     background-color: var(--white);
     border-radius: 15px;
     padding:2em;
-    max-width: 65em;
+    max-width: 60em;
 }
 
 .logo {
@@ -203,16 +202,13 @@ input[type=radio]:checked + .percentaje {
     text-align: center;
 }
 
-@media (min-width: 43.75em) {
+@media (min-width: 55.68em) {
     .main {
-        display: flex;
+        display: grid;
         gap:3em;
-    }
-    .user_input {
-        width:50%;
+        grid-template-columns: 1fr 1fr;
     }
     .results {
-        width:50%;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
