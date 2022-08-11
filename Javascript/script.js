@@ -6,6 +6,7 @@ let tip_amount = document.querySelectorAll(".amount")[0];
 let total_amount = document.querySelectorAll(".amount")[1];
 let resetButton = document.querySelector(".reset");
 let inputNumber = document.querySelectorAll("input[type='number']");
+let errorMessage = document.querySelectorAll(".error_message");
 
 let tip_percentaje = 0;
 let bill_amount = 0;
@@ -30,13 +31,17 @@ function getCustomPercentaje(e) {
     });
 
     tip_percentaje = +e.target.value;
-    isInputCorrect(e);
+    validateInput(e);
     displayResults();
 }
 
 function getButtonPercentaje(e) {
     if (percentaje_custom.value != "") {
         percentaje_custom.value = "";
+    }
+    if (errorMessage[1].style.display == "block") {
+        errorMessage[1].style.display = "none";
+        percentaje_custom.style = "border-color: transparent";
     }
 
     tip_percentaje = +e.target.value;
@@ -45,13 +50,13 @@ function getButtonPercentaje(e) {
 
 function getBill(e) {
     bill_amount = +e.target.value;
-    isInputCorrect(e);
+    validateInput(e);
     displayResults();
 }
 
 function getNumPeople(e) {
     number_people = +e.target.value;
-    isInputCorrect(e);
+    validateInput(e);
     displayResults();
 }
 
@@ -94,17 +99,37 @@ function reset() {
     }
 }
 
-function isInputCorrect(e) {
+function validateInput(e) {
     if (+e.target.value > 0) {
         e.target.style = "border-color: transparent;";
         return;
     }
 
-    e.target.value = "";
     e.target.style = "border-color: red;";
+    if (e.target.id == "bill") {
+        showErrorMessage(0, e.target.value);
+    } else if (e.target.id == "custom") {
+        showErrorMessage(1, e.target.value);
+    } else {
+        showErrorMessage(2, e.target.value);
+    }
+
+    e.target.value = "";
 }
 
 function focusInputNumber(e) {
     e.target.style = "border-color: var(--strong-cyan);";
+    if (e.target.id == "bill") {
+        errorMessage[0].style = "display:none;";
+    } else if (e.target.id == "custom") {
+        errorMessage[1].style = "display:none;";
+    } else {
+        errorMessage[2].style = "display:none;";
+    }
+}
+
+function showErrorMessage(index, value) {
+    errorMessage[index].textContent = +value == 0 ? "can't be zero" : "No negative";
+    errorMessage[index].style = "display:block;";
 }
 

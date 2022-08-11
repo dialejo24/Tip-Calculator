@@ -20,7 +20,8 @@
       </header>
       <main class="main">
         <section class="user_input">
-          <div>
+          <div class="cont_input">
+            <p class="error_message"></p>
             <label for="bill" class="title">Bill</label>
             <input type="number" placeholder="0" dir="rtl" id="bill" class="bill">
           </div>
@@ -57,12 +58,14 @@
                   <span>50%</span>
                 </label>
               </div>
-              <div>
+              <div class="cont_input">
                 <input type="number" placeholder="Custom" dir="rtl" class="custom" id="custom">
+                <p class="error_message"></p>
               </div>
             </div>
           </div>
-          <div>
+          <div class="cont_input">
+            <p class="error_message"></p>
             <label for="people" class="title">Number of People</label>
             <input type="number" dir="rtl" placeholder="0" id="people" class="people"> 
           </div>

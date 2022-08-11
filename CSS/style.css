@@ -154,6 +154,15 @@ input[type=radio]:checked + .percentaje {
 .title {
     color:var(--grayish-cyan);
 }
+.cont_input {
+    position: relative;
+}
+.error_message {
+    color:red;
+    position: absolute;
+    right:0;
+    display: none;
+}
 
 .results {
     background-color: var(--very-dark-cyan);
